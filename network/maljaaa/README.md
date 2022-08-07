@@ -62,7 +62,8 @@
 
 ## TCP(Transmission Control Protocol, 전송 제어 프로토콜)
 🚀 신뢰성있는 데이터 통신을 가능하게 해주는 프로토콜
-* 특징
+
+[ 특징 ]
  - Connection 연결(3 way handshake) - 양방향 통신
  - 데이터의 순차 전송을 보장
  - Flow Control(흐름제어)
@@ -87,4 +88,8 @@
 * Urgent Pointer : 긴급 포인터(URG 플래그가 1이라면 수신 측은 이 포인터가 가리키고 있는 데이터를 우선 처리)
 * Options : TCP의 기능을 확장할 떄 사용(크기가 고정된 것이 아니라 가변적)
 
-## 3 
+## TCP 3 way handshake
+
+![image](https://snabaynetworking.com/wp-content/uploads/2019/10/TCP-3-Way-Handshake-Process-1.jpg)
+
+
