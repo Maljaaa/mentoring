@@ -64,3 +64,27 @@
 🚀 신뢰성있는 데이터 통신을 가능하게 해주는 프로토콜
 * 특징
  - Connection 연결(3 way handshake) - 양방향 통신
+ - 데이터의 순차 전송을 보장
+ - Flow Control(흐름제어)
+ - Congestion Control(혼잡 제어)
+ - Error Detection(오류 감지)
+
+### Segment
+🚀 TCP 프로토콜의 PDU(Protocaol Data Unit)
+* 데이터를 잘라서 전송하게 되는데, 이때 잘라진 데이터와 TCP Header가 붙어서 하나의 Segment를 구성한다.
+
+### TCP Header
+🚀 TCP가 맡은 역할을 수행하고 데이터의 정보를 표현하기 위해 데이터에 붙히는 헤더
+
+* Souce port, Destination port : 포트 번호 정보
+* Sequence Number : 전송하는 데이터의 순서 정보(올바른 데이터 재조립에 사용)
+* Acknowledgment Number : 승인 번호, 데이터를 받은 수신자가 예상하는 다음 시퀀스 번호
+* Data Offset : 전체 Segment 중, 헤더가 아닌 데이터가 시작되는 위치 표시
+* Reserved(3 bits) : 미래를 위해 예약된 필드로 모두 0으로 채워져야 함
+* Flags : 세그먼트의 속성을 나타내는 9개의 비트 플래그
+* Window Size : 한번에 전송할 수 있는 데이터 양
+* Checksum : 데이터를 송신하는 중에 발생할 수 있는 오류를 검출하기 위한 값
+* Urgent Pointer : 긴급 포인터(URG 플래그가 1이라면 수신 측은 이 포인터가 가리키고 있는 데이터를 우선 처리)
+* Options : TCP의 기능을 확장할 떄 사용(크기가 고정된 것이 아니라 가변적)
+
+## 3 
