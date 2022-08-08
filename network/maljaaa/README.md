@@ -123,3 +123,5 @@
 
 **[Step 5]**
 **Client**가 **Server**에게 FIN 잘 받았다고 ACK 송신
+
+## 흐름제어
