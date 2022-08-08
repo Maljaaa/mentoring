@@ -69,6 +69,8 @@
  - Flow Control(흐름제어)
  - Congestion Control(혼잡 제어)
  - Error Detection(오류 감지)
+ - UDP보다 속도가 느리다(Time wait 때문)
+ - 전이중(Full-Duplex, 양방향 통신), 점대점(Point to Point) 방식
 
 ### Segment
 🚀 TCP 프로토콜의 PDU(Protocaol Data Unit)
@@ -88,8 +90,36 @@
 * Urgent Pointer : 긴급 포인터(URG 플래그가 1이라면 수신 측은 이 포인터가 가리키고 있는 데이터를 우선 처리)
 * Options : TCP의 기능을 확장할 떄 사용(크기가 고정된 것이 아니라 가변적)
 
-## TCP 3 way handshake
+## TCP 3 way handshake(연결)
 
 ![image](https://snabaynetworking.com/wp-content/uploads/2019/10/TCP-3-Way-Handshake-Process-1.jpg)
 
+**[Step 1]**
+**Client**가 **Server**에게 연결을 시도하는 SYN 비트를 1로 설정해 패킷 송신
 
+**[Step 2]**
+**Server**가 **Client**에게 연결 잘 받았고 나도 연결하려고 ACK, SYN 비트를 1로 설정해 패킷 송신
+
+**[Step 3]**
+**Client**가 **Server**에게 연결 잘 받았고 데이터 보내려고 ACK 비트를 1로 설정해 패킷 송신
+
+> 패킷은 택배
+
+## TCP 4 way handshake(연결 해제)
+
+![image](https://t1.daumcdn.net/cfile/tistory/99229C485C1D90C038)
+
+**[Step 1]**
+데이터를 전부 송신한 **Client**가 **Server**에게 FIN 송신
+
+**[Step 2]**
+**Server**가 **Client**에게 FIN 잘 받았다고 ACK 송신
+
+**[Step 3]**
+**Server**가 **Client**에게 남은 패킷 송신 (Client 일정 시간 대기)
+
+**[Step 4]**
+**Server**가 **Client**에게 FIN 송신
+
+**[Step 5]**
+**Client**가 **Server**에게 FIN 잘 받았다고 ACK 송신
