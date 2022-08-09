@@ -265,7 +265,10 @@ GET /users?sort=name&filter=developer&limit=100
 
 ### HTTPS가 필요한 이유
 
-🚀 HTTPS = HTTP + SSL (암호화, HTTP 자체 암호 X, HTTP Header 암호 X)
+🚀 HTTPS = HTTP + SSL (암호화, HTTP 자체 암호 X, HTTP Header 암호 X, 세션 데이터 암호화 O)
+
+![image](https://miro.medium.com/max/1218/0*l7N0VL93DBrNIjA4)
 
 1. 보안성
-2. 검색 
+ * 
+2. 검색 엔진 최적화(SEO)
