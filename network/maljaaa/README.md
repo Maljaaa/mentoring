@@ -323,7 +323,60 @@ Content-Type: text/gif
 
 **[HTTP/11.1 - 표준 프로토콜]**
 
-🚀 
+🚀 모호함을 명확하게 하고 많은 개선 사항들을 도입
+
+> 단일 커넥션
+```
+GET /en-US/docs/Glossary/Simple_header HTTP/1.1
+Host: developer.mozilla.org
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:50.0) Gecko/20100101 Firefox/50.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: https://developer.mozilla.org/en-US/docs/Glossary/Simple_header
+
+200 OK
+Connection: Keep-Alive
+Content-Encoding: gzip
+Content-Type: text/html; charset=utf-8
+Date: Wed, 20 Jul 2016 10:55:30 GMT
+Etag: "547fa7e369ef56031dd3bff2ace9fc0832eb251a"
+Keep-Alive: timeout=5, max=1000
+Last-Modified: Tue, 19 Jul 2016 00:59:33 GMT
+Server: Apache
+Transfer-Encoding: chunked
+Vary: Cookie, Accept-Encoding
+
+(content)
+
+
+GET /static/img/header-background.png HTTP/1.1
+Host: developer.mozilla.org
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:50.0) Gecko/20100101 Firefox/50.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: https://developer.mozilla.org/en-US/docs/Glossary/Simple_header
+
+200 OK
+Age: 9578461
+Cache-Control: public, max-age=315360000
+Connection: keep-alive
+Content-Length: 3077
+Content-Type: image/png
+Date: Thu, 31 Mar 2016 13:34:46 GMT
+Last-Modified: Wed, 21 Oct 2015 18:27:50 GMT
+Server: Apache
+
+(image content of 3077 bytes)
+```
+
+* 커넥션 재사용 -> 시간 절약
+* 파이프라이닝 추가 -> 두번째 요청 전송 가능 -> 커뮤니케이션 레이턴시 낮춤
+* 청크된 응답 지원
+* 추가적인 캐시 제어 메커니즘 도입
+* 컨텐츠 협상 -> 교환하려는 가장 적합한 컨텐츠에 대한 동의 가능
+* host 헤더 -> 서버 코로케이션(동일 ip 주소에 다른 도메인 호스트) 가능
 
 ## HTTPS
 
