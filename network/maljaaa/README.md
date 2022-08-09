@@ -215,11 +215,11 @@
 
 ## HTTP(Hyper Text Transfer Protocol)
 
-🚀 인터넷에서 데이터를 주고받을 수 있는 프로토콜
+🚀 인터넷에서 데이터를 주고받을 수 있는 가장 기본적인 프로토콜
 
 ### HTTP 메시지
 
-* 서버가 
+* 서버가 응답할 때 응담에 대한 정보를 담아 클라리언트로 보낼 때 정보가 담긴 메시지
 
 ```
 GET https://www.zerocho.com HTTP/1.1
@@ -227,3 +227,45 @@ User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) ...
 Upgrade-Insecure-Requests: 1
 ```
 
+> 첫 줄 : GET(HTTP 매서드), www.zerocho.com(주소), HTTP/1.1(HTTP 버전) => **메서드 주소 버전**<br>
+> 두번째 줄 : 헤더<br>
+> 세번쨰 줄 : 헤더
+
+```
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Encoding: gzip
+Content-Length: 35653
+Content-Type: text/html;
+
+<!DOCTYPE html><html lang="ko" data-reactroot=""><head><title...
+```
+
+> 첫 줄 : **버전 상태코드 상태메시지**(200은 성공적인 요청)<br>
+> 2,3,4,5번째 줄 : 헤더<br>
+> 마지막 줄 : 본문
+ 
+### HTTP 메서드
+
+```
+GET www.naver.com HTTP/1.1
+```
+
+* 자주 쓰는 HTTP 메서드 : GET 가져오다, POST 게시하다, PUT 집어넣다, PATCH 고치다, DELETE 지우다, (OPTIONS, HEAD, CONNECT, TRACE)
+
+* REST : '주소를 자원, 메서드를 동사'라고 보는 개발 방식
+
+```
+GET /users?sort=name&filter=developer&limit=100
+```
+
+> 주소 뒤에 ?를 붙힌 후 키=값&키=값<br>
+> 이름순으로 가져오고 싶으면 sort<br>
+> 쿼리스트링 간에 &로 구별 가능
+
+### HTTPS가 필요한 이유
+
+🚀 HTTPS = HTTP + SSL (암호화, HTTP 자체 암호 X, HTTP Header 암호 X)
+
+1. 보안성
+2. 검색 
