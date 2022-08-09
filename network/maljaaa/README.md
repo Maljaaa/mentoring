@@ -183,4 +183,21 @@
 * 중복된 순번의 패킷을 3개 받으면 재전송한다. 
 * 이러한 현상이 일어나는 것은 약간의 혼잡이 발생한 것으로 간주하여 WS를 절반으로 줄인다.
    
-   
+## UDP(User Datagram Protocol)
+
+![image](https://www.stevenjlee.net/wp-content/uploads/2020/06/image-21.png)
+
+>Client가 패킷 송신
+
+* TCP보다 신뢰성이 떨어지지만 전송 속도가 일반적으로 빠른 프로토콜(순차전송 x, 흐름제어 x, 혼잡제어 x)
+* Connectionless(3 way handshake X)
+* Error Detection
+* 비교적 데이터의 신뢰성이 중요하지 않을 떄 사용(ex. 영상 스트리밍)
+* 데이터를 쪼개지 않고 그대로 헤더와 함께 전송
+
+### UDP Header
+
+![image](https://t1.daumcdn.net/cfile/tistory/272A5A385759267B36)
+
+* 포트 존재, 에러 검출 비트 존재
+
