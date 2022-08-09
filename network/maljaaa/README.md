@@ -369,15 +369,16 @@ Server: Apache
 (image content of 3077 bytes)
 ```
 
-* Persistent Connection : 
+* Persistent Connection : 지정한 timout 동안 커넥션을 닫지 않는 방식 -> 커넥션을 열어두면 여러 요청이 이 커넥션을 사용할 수 있음
+* Pipelining : 하나의 커넥션에서 응답을 기다리지 않고 순차적인 여러 요청을 연속적으로 보내 그 순서에 맞춰 응답을 받는 방식으로 지연 시간을 줄이는 방법<br>
+-> 문제점 : Head Of Line Blocking(먼저 보낸 요청이 너무 오래걸림), Header 구조의 중복(데이터가 쓸데없이 커져버림)
+
 
 **[HTTP/2 - 더 나은 성능을 위한 프로토콜]**
 
-HTTP/2 vs HTTP/1.1
-* 이진 프로토콜 -> 읽거나 수작업 X
-* 다중화 프로토콜 -> 순서 제거
-* 중복, 오버헤드 제거 -> 헤더 압축
-* 서버 푸시(클라이언트 캐시를 필요하게 될 데이터로 채워넣음)
+🚀 기존 HTTP/1.X 버전의 성능 향상에 초점을 맞춘 프로토콜, 표준의 대체가 아닌 확장
+
+* 
 
 **[HTTP/3 - HTTP over QUIC]**
 
