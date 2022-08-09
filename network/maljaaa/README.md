@@ -185,11 +185,12 @@
    
 ## UDP(User Datagram Protocol)
 
+🚀 TCP보다 신뢰성이 떨어지지만 전송 속도가 일반적으로 빠른 프로토콜(순차전송 x, 흐름제어 x, 혼잡제어 x)
+
 ![image](https://www.stevenjlee.net/wp-content/uploads/2020/06/image-21.png)
 
 >Client가 패킷 송신
 
-* TCP보다 신뢰성이 떨어지지만 전송 속도가 일반적으로 빠른 프로토콜(순차전송 x, 흐름제어 x, 혼잡제어 x)
 * Connectionless(3 way handshake X)
 * Error Detection
 * 비교적 데이터의 신뢰성이 중요하지 않을 떄 사용(ex. 영상 스트리밍)
@@ -200,4 +201,29 @@
 ![image](https://t1.daumcdn.net/cfile/tistory/272A5A385759267B36)
 
 * 포트 존재, 에러 검출 비트 존재
+
+### TCP vs UDP
+|TCP|UDP|
+|:---:|:---:|
+|Connection-oriented protocol(연결지향형 프로토콜)|Connection-less protocol|
+|Connection by byte stream(바이트 스트림을 통한 연결)|Connection by message stream(메시지 스트림을 통한 연결)|
+|Congestion / Flow control(혼잡제어, 흐름제어)|No Congestion / Flow control(혼잡제어와 흐름제어 X)|
+|Ordered, Lower speed(순서보장, 상대적 느림)|Not ordered, Higher speed(순서 보장되지 않음, 상대적으로 빠름)|
+|Reliable data transmission(신뢰성 있는 데이터 전송 - 안정적)|Unreliable data transmission(데이터 전송 보장 X)|
+|TCP packet : Segment|UDP packet : Datagram|
+|HTTP, Email, File transfer...|DNS, Broadcasting...|
+
+## HTTP(Hyper Text Transfer Protocol)
+
+🚀 인터넷에서 데이터를 주고받을 수 있는 프로토콜
+
+### HTTP 메시지
+
+* 서버가 
+
+```
+GET https://www.zerocho.com HTTP/1.1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) ...
+Upgrade-Insecure-Requests: 1
+```
 
