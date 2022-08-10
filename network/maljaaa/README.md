@@ -438,8 +438,22 @@ www.example-url.com/resources?name1=송유현&name2=곽철용
 * 성공시, 200(ok) & XML, JSON 등 여러 형식의 데이터와 함께 반환
 * idempotent : 연산을 여러번 적용하더라도 결과가 달라지지 않는 성질
 
+### POST
 
+🚀 리소스를 생성 / 업데이트 하기 위해 서버에 데이터를 보내는데 사용
 
+* 전송 데이터를 HTTP 메시지의 Body에 담아서 전송
+* HTTP 메시지의 Body는 길이의 제한없이 데이터 전송 가능 -> 대용량 데이터 전송 가능
+
+🌱 내용이 눈에 보이지 않지만 여러 툴로 확인할 수 있기 때문에 민감한 데이터의 경우에는 반드시 암호화해서 전송
+
+[ 특징 ]
+* 캐시되지 않음
+* 브라우저 기록에 남지 않음
+* 북마크에 추가할 수 없음
+* 데이터 길이에 대한 제한이 없음
+* 자원 생성은 201(Created) HTTP 응답 코드를 반환
+* idempotent 하지 않음
 
 ![image](https://images.velog.io/images/songyouhyun/post/0dea38bf-bdb3-4562-a5f0-c510f843f48f/image.png)
 
@@ -454,4 +468,3 @@ www.example-url.com/resources?name1=송유현&name2=곽철용
 |리소스 전달 방식|쿼리스트링|HTTP Body|
 |idempotent|O|X|
 
-> idepotent : 연산을 여러번 적용하더라도 결과가 달라지지 않는 성질, 즉 동일한 결과 나타나야함
