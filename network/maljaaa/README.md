@@ -410,3 +410,18 @@ Server: Apache
  * Google은 HTTPS로 설정된 사이트에 추가적인 검색 가산점을 준다고 함
 3. 가속화된 모바일 페이지
  * AMP(Accelerated Mobile Pages)는 모바일 기기에서 빠르게 콘텐츠를 로딩하기 위한 방법으로 Google이 개발함
+
+## GET vs POST
+
+![image](https://images.velog.io/images/songyouhyun/post/0dea38bf-bdb3-4562-a5f0-c510f843f48f/image.png)
+
+||GET|POST|
+|---|:---:|:---:|
+|캐시|O|X|
+|브라우저 기록|O|X|
+|북마크 추가|O|X|
+|데이터 길이 제한|O|X|
+|HTTP 응답 코드|200(ok)|201(created)|
+|언제 주로 사용?|리소스 요청|리소스 생성|
+|리소스 전달 방식|쿼리스트링|HTTP Body|
+|idempotent|O|X|
