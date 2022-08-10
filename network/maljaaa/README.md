@@ -385,11 +385,11 @@ Server: Apache
 
 **[HTTP/3 - HTTP over QUIC]**
 
-🚀 전송 계층 부분에 TCP/TLS(SSL업그레이드 버전) 대신 QUIC 사용
+🚀 전송 계층 부분에 TCP/TLS(SSL업그레이드 버전) 대신 QUIC(Google에서 제작) 사용
 
 ### QUIC
 
-* UDP 바탕으로 만듬
+* UDP 바탕으로 만듬(데이터 전송에 집중한 설게, 별도의 기능X -> 원하는 기능 구현 & TCP의 지연을 줄이면서 TCP만큼 신뢰성 확보 가능)
 * 전송 속도 향상
 * Connection UUID라는 고유한 식별자로 서버와 연결 -> 커넥션 재수립 필요 X
 * TLS 기본 적용, IP Spoofing / Replay Attack 방지 -> 보안성 향상
@@ -397,10 +397,10 @@ Server: Apache
 
 ## HTTPS
 
-### HTTPS가 필요한 이유
-
-🚀 HTTPS = HTTP + SSL<br>
+🚀 HTTPS는 SSL 레이어 위에 HTTP를 통과 시키는 방식<br>
 (암호화, HTTP 자체 암호 X, HTTP Header 암호 X, 세션 데이터 암호화 O)
+
+### HTTPS가 필요한 이유
 
 ![image](https://miro.medium.com/max/1218/0*l7N0VL93DBrNIjA4)
 
@@ -409,4 +409,4 @@ Server: Apache
 2. 검색 엔진 최적화
  * Google은 HTTPS로 설정된 사이트에 추가적인 검색 가산점을 준다고 함
 3. 가속화된 모바일 페이지
- * AMP는 모바일 기기에서 빠르게 콘텐츠를 로딩하기 위한 방법으로 Google이 개발함
+ * AMP(Accelerated Mobile Pages)는 모바일 기기에서 빠르게 콘텐츠를 로딩하기 위한 방법으로 Google이 개발함
