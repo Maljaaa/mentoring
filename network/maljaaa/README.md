@@ -537,7 +537,32 @@ www.example-url.com/resources?name1=송유현&name2=곽철용
 * 네트워크 상에서 Client와 Server 사이의 통신 방식 중 하나
 * 어떤 자원에 대해 CRUD연산을 수행하기 위해 URI(Resource)로 GET, POST 등의 방식(Method)을 사용하여 요청을 보내며, 요청을 위한 자원은 특정한 형태(Representation of Resource)로 표현
 
-[ 
+[ 구성 요소 ]
+1. 자원(Resource) - URI
+* 모든 자원에는 고유한 ID가 존재하고, 이 자원은 Server에 존재함
+* 자원을 구별하는 ID는 '/jjuniv/:jjuniv_id'와 같은 HTTP URI(식별자)
+* Client는 URI를 이용해 자원을 지정하고 해당 자원의 상태(정보)에 대한 조작을 Server에 요청
+
+2. 행위(Verb) - Method
+* HTTP Method 사용
+|데이터 처리 방법|HTTP Method|
+|:---:|:---:|
+|Create|POST|
+|Read|GET|
+|Update|PUT or PATCH|
+|Delete|DELETE|
+
+3. 표현(Representation of Resource)
+* Client - Server 가 데이터를 주고 받는 형태로 JSON, XML, TEXT, RSS 등이 있음
+* JSON, XML을 통해 주고 받는 것이 일반적
+
+[ 특징 ]
+1. Server-Client
+2. Stateless(무상태)
+3. Cacheable(캐시 처리 기능)
+4. Layered System(계층 구조)
+5. Uniform Interface(인터페이스 일관성)
+6. Self-Descriptiveness(자체 표현)
 
 🌱 HTTP를 잘 활용하기 위해서 만들어진 아키텍처
 🌱 URI와 HTTP 메서드를 사용해서 자원과 행위를 표현
