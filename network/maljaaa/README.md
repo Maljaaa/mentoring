@@ -627,4 +627,40 @@ www.example-url.com/resources?name1=송유현&name2=곽철용
 🌱 접속 클라이언트 수가 가장 적은 서버를 선택함으로써, 로드밸런서에서 실시간으로 connection 수를 관리 또는 각 서버에서 주기적으로 알려주는 것이 필요
 
 ## Socket(TCP/IP Socket)
+### Socket 이전 실시간 통신 기술들
+1. Polling
+![image](https://junhyunny.github.io/images/polling-long-polling-and-javascript-example-1.JPG)
+* 서버로 일정 주기 요청 송신
+* real-time 통신에서는 언제 통신이 발생할지 에측이 불가능
+* 불필요한 request와 connection을 생성
+* real-time 통신이라고 부르기 애매할 정도의 실시간성
 
+2. Long Polling
+![image](https://velog.velcdn.com/images%2Fjungbumwoo%2Fpost%2F0db7fa2b-e55a-495c-aa98-09502622823b%2Fimage.png)
+* 서버에 요청 보내고 이벤트가 생겨 응답 받을 때까지 연결 종료 X
+* 응답 받으면 끊고 다시 재요청
+* 많은 양의 메시지가 쏟아질 경우 polling과 같음
+
+3. Streaming
+* 서버에 요청 보내고 끊기지 않은 연결상태에서 끊임없이 데이터 수신
+* 클라이언트에서 서버로의 데이터 송신이 어려움
+
+### 클라이언트 소켓과 서버 소켓
+
+
+### 소켓 API 실행흐름
+![image](https://t1.daumcdn.net/cfile/tistory/995C23465C7DD7E30B)
+
+🚀 클라이언트 소켓의 흐름
+- 소켓 생성
+- 서버 측에 연결(connect())
+- 서버 소켓에서 연결을 받으면 데이터를 송수신(send()/recv())
+- 모든 처리가 완료되면 소켓을 닫음
+
+🚀 서버 솤세의 흐름
+- 소켓 생성
+- 서버가 사용할 IP주소와 포트 번호를 생성한 소켓에 결합(bind())
+- 클라이언트로부터 연결 요청이 수신되는지 주시(listen())
+- 요청이 수신되면 Accept 후 소켓 생성
+- 데이터 송수신(send()/recv())
+- 소켓 닫음
