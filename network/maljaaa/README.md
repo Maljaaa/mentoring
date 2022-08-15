@@ -627,6 +627,9 @@ www.example-url.com/resources?name1=송유현&name2=곽철용
 🌱 접속 클라이언트 수가 가장 적은 서버를 선택함으로써, 로드밸런서에서 실시간으로 connection 수를 관리 또는 각 서버에서 주기적으로 알려주는 것이 필요
 
 ## Socket(TCP/IP Socket)
+* **소켓**은 소프트웨어로 작성된 추상적인 개념의 통신 접속점이라고 할 수 있는데 네트워크 응용 프로그램은 소켓을 통하여 통신망으로 데이터를 송수신하게 됨
+* **소켓**은 응용 프로그램에서 TCP/IP를 이용하는 창구 역할을 하며 응용 프로그램과 소켓 사이의 **인터페이스 역할**을 하고 있음
+
 ### Socket 이전 실시간 통신 기술들
 1. Polling
 ![image](https://junhyunny.github.io/images/polling-long-polling-and-javascript-example-1.JPG)
@@ -646,7 +649,8 @@ www.example-url.com/resources?name1=송유현&name2=곽철용
 * 클라이언트에서 서버로의 데이터 송신이 어려움
 
 ### 클라이언트 소켓과 서버 소켓
-
+* 클라이언트 소켓(능동적) : 서버 프로그램으로 연결 요청을 하는 것과 데이터 전송을 하는 일을 함
+* 서버 소켓(수동적) : 클라이언트로부터 연결 요청이 오기를 기다렸다가 연결 요청이 들어오면 클라이언트와 연결을 맺고 다른 소켓을 만드는 일을 함
 
 ### 소켓 API 실행흐름
 ![image](https://t1.daumcdn.net/cfile/tistory/995C23465C7DD7E30B)
