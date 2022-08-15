@@ -559,10 +559,14 @@ www.example-url.com/resources?name1=송유현&name2=곽철용
 [ 특징 ]
 1. Server-Client
 2. Stateless(무상태)
+ * HTTP 프로토콜이 Stateless Protocol이므로
 3. Cacheable(캐시 처리 기능)
+ * HTTP 프로토콜을 그대로 사용하므로
 4. Layered System(계층 구조)
 5. Uniform Interface(인터페이스 일관성)
+ * URI로 지정한 Resource에 대한 요청을 통일되고 한정적으로 수행하는 아키ㅔㄱ처 스타일
 6. Self-Descriptiveness(자체 표현)
+ * 요청 메시지만 보고도 쉽게 이해할 수 있는 자체 표현 구조
 
 🌱 HTTP를 잘 활용하기 위해서 만들어진 아키텍처
 🌱 URI와 HTTP 메서드를 사용해서 자원과 행위를 표현
@@ -572,4 +576,55 @@ www.example-url.com/resources?name1=송유현&name2=곽철용
 ### RESTful
 
 🌱 REST란 아키텍처 스타일의 제약조건을 모두 만족하는 시스템
+
+## DNS 흐름
+
+### DNS(Domain Name System)란
+
+![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcxL7LB%2FbtqQR6V9Lbe%2FAIzYDnFPqzkkU8sg4jxCZ1%2Fimg.png)
+
+🚀 사람이 읽을 수 있는 도메인 이름(www.naver.com)을 머신이 읽을 수 있는 IP주소(192.0.1.2)로 변환하는 시스템
+
+### DNS Round Robin 방식
+
+![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FkIrwn%2Fbtrc8hoWQLp%2FOdb8ETK7pruJ5te9eayL20%2Fimg.png)
+
+🚀 DNS Load Balancing 기법 중 Round Robin 방식은 부하 분산의 대표적인 알고리즘으로써, 순서대로 돌아가면서(보통 시간 단위) 각각의 서버로 트래픽을 분산시켜서 처리하는 알고리즘
+> Load Balancing : 부하분산<br>
+> DNS Load Balancing : 별도의 소프트웨어나 하드웨어 로드밸런싱 장비를 이용하지 않고 DNS를 이용하여 도메인 정보를 조회하는 시점에서 다른 IP정보를 통해 트래픽을 분산하는 기법
+
+* 한 대로 운영하면 벅찬 운영을 여러대가 분산해서 감당하기에 좀 더 수월하게 운영이 가능
+* 서버 한 대가 죽어도 운영이 가능
+* 중간 장비(로드밸런서 등) 없이도 서비스가 가능
+
+🌱 여러개의 IP주소를 결과로 돌려줌
+
+* 사용자의 OS 애플리케이션에 따라 동작이 다름
+* 여러 개의 IP 중 제일 먼저 조회된 IP를 선택, 무작위로 IP를 선택
+* 선택 IP 접속이 안되면 다음 조회된 IP 접속하도록 로직을 추가할 수 있음
+
+### DNS Round Robin 방식의 문제점
+
+1. 서버의 수만큼 공인 IP주소가 필요
+ * 서버 대수를 늘리기 위해
+2. 균등하게 분산되지 않음
+ * 캐싱되는 경우에는 항상 같은 서버로 접속됨
+3. 서버가 다운되도 확인이 불가능
+ * 일반적인 로드밸런싱은 Health check를 수반하지만 Round Robin은 별도로 하지 않음
+ > Health Check : 서버에 일정한 간격으로 신호를 보내고 응답이 오는지 체크하여 정상 가동중인지를 판단
+
+### Weighted Round Robin(WRR)
+* DNS Round Robin은 서버가 서로 동일한 스펙일 경우 사용하는 것이 타당함
+* 만약, 성능이 월등히 좋은 서버가 있다면 그 서버에 트래픽을 더 많이 할당해야 함
+* L4의 부하 분산 방법 중 WRR방식을 사용하면 각각의 웹 서버에 가중치를 설정해서 분산 비율을 변경할 수 있음
+
+🌱 웹 서버에 가중치를 가미해서 분산 비율을 변경함으로써, 가중치가 큰 서버일수록 빈번하게 선택되므로 처리능력이 높은 서버의 가중치를 높게 설정
+
+### Least Connection
+* WRR과 마찬가지의 이유로 사용됨
+* 접속 클라이언트 수가 가장 적은 서버를 선택하는 방식
+
+🌱 접속 클라이언트 수가 가장 적은 서버를 선택함으로써, 로드밸런서에서 실시간으로 connection 수를 관리 또는 각 서버에서 주기적으로 알려주는 것이 필요
+
+## Socket(TCP/IP Socket)
 
