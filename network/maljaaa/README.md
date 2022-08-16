@@ -764,7 +764,10 @@ Sec-WebSocket-Protocol: chat
 ### CORS 해결하기
 1. 프론트 프록시 서버 설정(개발 환경)
 브라우저 - 프론트 서버 - 백 서버
+same origin을 활용
 
 2. 직접 헤더에 설정
 
 3. 스프링 부트 이용
+* @CrossOrigin(origins="주소", allowCredentials = "true")
+* @Configuration으로 전역 설정
