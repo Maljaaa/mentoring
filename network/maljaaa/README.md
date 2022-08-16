@@ -731,3 +731,18 @@ Sec-WebSocket-Protocol: chat
 1. 프로그램 구현에 보다 많은 복잡성
 2. 서버와 클라이언트 간의 Socket 연결을 유지하는 것 자체가 비용이 듬
 3. 오래된 버전의 웹 브라우저에서는 지원하지 않음(SockJS 라이브러리는 Fallback option을 제공)
+
+## CORS
+
+`SOP(Same Origin Policy)`
+🚀 다른 출처(URL의 Protocol, Host, Port를 통해 같은 출처인지 다른 출처인지 판단 가능)의 리소스를 사용하는 것에 제한하는 보안 방식
+
+🌱 그렇다면 다른 출처의 리소스가 필요하다면 어떻게 할까? -> 답은 CORS
+
+`CORS(Cross-Origin Resource Sharing`
+🚀 교차 출처 리소스 공유(CORS)는 추가 HTTP 헤더를 사용하여, 한 출처에서 실행 중인 웹 애플리케이션이 다른 출처의 선택한 자원에 접근할 수 있는 권한을 부여하도록 브라우저에 알려주는 체제
+
+### CORS 접근제어 시나리오
+* 단순 요청(Simple Request)
+* 프리플라이트 요청(Preflight Request)
+* 인증정보 포함 요청(Credentialed Request)
