@@ -743,6 +743,28 @@ Sec-WebSocket-Protocol: chat
 🚀 교차 출처 리소스 공유(CORS)는 추가 HTTP 헤더를 사용하여, 한 출처에서 실행 중인 웹 애플리케이션이 다른 출처의 선택한 자원에 접근할 수 있는 권한을 부여하도록 브라우저에 알려주는 체제
 
 ### CORS 접근제어 시나리오
-* 단순 요청(Simple Request)
-* 프리플라이트 요청(Preflight Request)
-* 인증정보 포함 요청(Credentialed Request)
+🌱 단순 요청(Simple Request)
+* Preflight 요청 없이 바로 요청을 날림
+* 메서드 : GET, POST, HEAD 중 하나
+* Content-Type : application/x-www-form-urlencoded, multipart/form-data, text/plain 중 하나
+* 헤더 : Accept, Accept-Language, Content-Language, Content-Type만 허용
+
+🌱 프리플라이트 요청(Preflight Request) - 요청 보내도 되니?
+* OPTIONS 매서드를 통해 다른 도메인의 리소스에 요청이 가능한지 확인 작업
+* 요청이 가능하다면 실제 요청(Actual Request)을 보냄
+* Preflight Request : Origin(요청 출처), Access-Control-Request-Method(실제 요청의 메서드), Access-Control-Request-Headers(실제 요청의 추가 헤더)
+* Preflight Response : Access-Control-Allow-Origin(서버 측 허가 출처), Access-Control-Allow-Method(서버 측 허가 메서드), Access-Control-Allow-Headers(서버 측 허가 헤더), Access-Control-Max-Age(응답 캐시 기간) / 응답 코든느 200대, 응답 바디는 비어있는 것이 좋음
+* CORS를 모르는 서버를 위해 필요함
+
+🌱 인증정보 포함 요청(Credentialed Request)
+* 인증 관련 헤더를 포함할 떄 사용하는 요청
+* 클라이언트 측 - credentials : include
+* 서버 측 - Access-Control-Allow-Credentials : true(Access-Control-Allow-Origin : * 은 안됨, 정확한 origin을 줘야함)
+
+### CORS 해결하기
+1. 프론트 프록시 서버 설정(개발 환경)
+브라우저 - 프론트 서버 - 백 서버
+
+2. 직접 헤더에 설정
+
+3. 스프링 부트 이용
