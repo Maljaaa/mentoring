@@ -672,6 +672,12 @@ www.example-url.com/resources?name1=송유현&name2=곽철용
 ## Web Socket(HttpSocket)
 🚀 두 프로그램 간의 메시지를 교환하기 위한 통신 방법 중 하나
 
+[ 특징 ]
+* 최초 접속에서만 HTTP 프로토콜 위에서 Handshaking을 하기 때문에 HTTP Header를 사용
+* 웹 소켓을 위한 별도의 포트는 없으며, 기존 포트(HTTP-80, HTTPS-443)을 사용
+* 프레임으로 구성된 메시지라는 논리적 단위로 송수신
+* 메시지에 포함될 수 있는 교환 가능한 메시지는 텍스트와 바이너리
+
 ### Web Socket Handshake 및 실행 흐름
 ![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcmqBIY%2FbtqKBOBCLJS%2FyKS7Ci7bq5DTki4DuJRlYk%2Fimg.png)
 > 붉은색 : Opening Handshake, 노란색 : Data Transfer, 보라색 : Closing Handshake
@@ -690,10 +696,38 @@ Sec-WebSocket-Version: 13
 Origin: http://localhost:9000
 ```
 
-* Upgrade : 프로토콜을 전환하기 위해 사용하는 헤더
-* Connection : 
+* HTTP : 연결 수립 과정은 HTTP 프로토콜 사용
+* 1.1 : HTTP 버전은 1.1 이상
+* GET : 반드시 GET 메서드를 사용
+* HOST : 웹 소켓의 서버 주소
+* Upgrade : 현재 클라이언트, 서버, 전송 프로토콜 연결에서 다른 프로토콜로 업그레이드 또는 변경하기 위한 규칙
+* Connection : Upgrade 헤더 필드가 명시되었을 경우, 송신자는 반드시 Upgrade 옵션을 지정한 Connection 헤더 필드도 전송
+* Sec-WebSocket-Key : 유효한 요청인지 확인하기 위해 사용하는 키 값(16바이트 숫자 -> base64로 인코딩)
+* Sec-WebSocket-Protocol : 사용하고자 하는 하나 이상의 웹 소켓 프로토콜 지정(서브 프로토콜)
+* Sec-WebSocket-Version : 클라이언트가 사용하고자 하는 웹 소켓 프로토콜 버전
+* Origin : 클라이언트의 주소
+
+```
+HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk=
+Sec-WebSocket-Protocol: chat
+```
+
+* 101 Switching Protocol: 101 Switching Protocols가 Response로 오면 웹 소켓이 연결
+* Sec-WebSocket-Accept : 클라이언트로부터 받은 Sec-WebSocket-Key를 사용하여 계산된 값(클라이언트에서 계산한 값과 일치하지 않으면 연결 수립 X)
+
 🚀 Data Transfer
+* WS(80) or WSS(443) : 데이터 보안을 위해서 SSL을 적용한 프로토콜
+* Message : 여러 Frame이 모여서 구성하는 하나의 논리적 메시지 단위
+* Frame : Communication에서 가장 작은 단위의 데이터, 작은 헤더 + Payload로 구성
+* 웹 소켓 통신에서 사용되는 데이터는 UTF8 인코딩
 
 🚀 Closing Handshake
+* Close Frame을 주고 받으며 연결 종료
 
 ### Web Socket 한계
+1. 프로그램 구현에 보다 많은 복잡성
+2. 서버와 클라이언트 간의 Socket 연결을 유지하는 것 자체가 비용이 듬
+3. 오래된 버전의 웹 브라우저에서는 지원하지 않음(SockJS 라이브러리는 Fallback option을 제공)
