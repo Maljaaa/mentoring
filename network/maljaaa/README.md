@@ -771,3 +771,24 @@ same origin을 활용
 3. 스프링 부트 이용
 * @CrossOrigin(origins="주소", allowCredentials = "true")
 * @Configuration으로 전역 설정
+
+## OSI 7Layer VS TCP/IP 4Layer VS TCP/IP 5Layer
+![image](https://velog.velcdn.com/images/vpdls1511/post/b7734cc0-846b-4b9f-88d3-0bfc85dbfc93/image.png)
+
+### OSI 7 Layer
+**상단에 OSI 7계층 모델 참고**
+
+### TCP/IP 4 Layer
+1. Applicatoin Layer
+* 특정 서비스를 제공하기 위해 애플리케이션끼리 정보를 주고 받을 수 있음(FTP, HTTP, SSH, Telnet, DNS, SMTP)
+
+2. Transport Layer
+* 송신된 데이터를 수신측 애플리케이션에 확실히 전달하게 함(TCP, UDP, RTP, RTCP)
+
+3. Internet Layer
+* 수신 측까지 데이터를 전달하기 위해 사용됌(IP, APP, ICMP, RARP, OSPF)
+
+4. Network Interface Layer
+* 네트워크에 직접 연결된 기기 간 전송을 할 수 있도록 함(Ethernet, PPP, Token Ring)
+
+### TCP/IP 5 Layer
