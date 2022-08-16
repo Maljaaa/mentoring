@@ -668,3 +668,32 @@ www.example-url.com/resources?name1=송유현&name2=곽철용
 - 요청이 수신되면 Accept 후 소켓 생성
 - 데이터 송수신(send()/recv())
 - 소켓 닫음
+
+## Web Socket(HttpSocket)
+🚀 두 프로그램 간의 메시지를 교환하기 위한 통신 방법 중 하나
+
+### Web Socket Handshake 및 실행 흐름
+![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcmqBIY%2FbtqKBOBCLJS%2FyKS7Ci7bq5DTki4DuJRlYk%2Fimg.png)
+> 붉은색 : Opening Handshake, 노란색 : Data Transfer, 보라색 : Closing Handshake
+
+🚀 Opening Handshake
+* 클라이언트에서 HTTP Upgrade request(핸드쉐이크 요청)을 전송하고, 핸드쉐이크 응답으로 응답 코드 101을 받음
+
+```
+GET /chat HTTP/1.1
+Host: localhost:8080
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==
+Sec-WebSocket-Protocol: chat, superchat
+Sec-WebSocket-Version: 13
+Origin: http://localhost:9000
+```
+
+* Upgrade : 프로토콜을 전환하기 위해 사용하는 헤더
+* Connection : 
+🚀 Data Transfer
+
+🚀 Closing Handshake
+
+### Web Socket 한계
