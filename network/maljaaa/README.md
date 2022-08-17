@@ -544,7 +544,8 @@ www.example-url.com/resources?name1=송유현&name2=곽철용
 * Client는 URI를 이용해 자원을 지정하고 해당 자원의 상태(정보)에 대한 조작을 Server에 요청
 
 2. 행위(Verb) - Method
-* HTTP Method 사용
+* HTTP Method 사용<br>
+
 |데이터 처리 방법|HTTP Method|
 |:---:|:---:|
 |Create|POST|
