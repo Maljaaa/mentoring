@@ -803,4 +803,4 @@ same origin을 활용
 * TCP/IP는 실직적인 통신, OSI는 장비 개발과 통신 자체를 어떻게 표준으로 잡을지에 사용
 
 ## 웹 통신 전체 흐름
-
+![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbBlWSK%2FbtrdPIrJdWs%2FZmlT0kCHzX0TbA6di4LlX0%2Fimg.png)
