@@ -804,3 +804,16 @@ same origin을 활용
 
 ## 웹 통신 전체 흐름
 ![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbBlWSK%2FbtrdPIrJdWs%2FZmlT0kCHzX0TbA6di4LlX0%2Fimg.png)
+
+* 사용자가 웹 브라우저를 통해 URL을 입력
+* 입력된 URL 중 도메인 네임을 DNS 서버에서 검색(여러 알고리즘 존재)
+* DNS 서버에서 해당 도메인 네임에 해당하는 IP 주소를 찾아 사용자가 입력한 URL 정보와 함께 전달
+* 웹 페이지 URL 정보와 전달받은 IP 주소를 이용해 HTTP 요청 메시지 생성
+* 요청은 TCP/IP를 통해 서버로 전송
+* 서버는 클라이언트 요청을 받고 응답을 전송
+`파일 다운로드 라면?`
+* 서버는 소켓에서 메모리를 Segment로 나누어 TCP/IP로 보내고 드라이버를 거쳐 NIC로 감
+* NIC로 도착하면 Frame이 되고 Packet에 담겨 Client로 보내짐
+* 서버가 했던 방식 역방향으로 파일을 조립함
+
+참고 : https://yaelimeee.tistory.com/50?category=962256
