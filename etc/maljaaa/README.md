@@ -20,16 +20,50 @@
 
 ### Blocking Non-Blocking / Synchronous Asynchronous
 **[4가지 조합의 경우]**
+![image](https://user-images.githubusercontent.com/44635266/68367180-75116900-0178-11ea-84dd-e9467b233eec.png)
+
 1. Blocking/Sync
-![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbGNMs7%2FbtrmMguF2Y0%2FCmpzZnttfHCIFYYxoKwU20%2Fimg.png)
-* 제어권이 넘어갔기 때문에 첫번째 줄 이하의 내용이 실행되지 않고 있음
-* 입력하면 제어권과 결과를 같이 받아서 처리
+```
+나 : 대표님, 개발자 좀 더 뽑아주세요..
+대표님 : 오케이, 잠깐만 거기 계세요!
+나 : …?!!
+대표님 : (채용 공고 등록.. 지원자 연락.. 면접 진행.. 연봉 협상..)
+나 : (과정 지켜봄.. 궁금함.. 어차피 내 일 하러는 못 가고 계속 서 있음)
+```
 
 2. Non-Blocking/Sync
+```
+나 : 대표님, 개발자 좀 더 뽑아주세요..
+대표님 : 오케이, 잠깐만 거기 계세요!
+나 : …?!!
+대표님 : (채용 공고 등록.. 지원자 연락.. 면접 진행.. 연봉 협상..)
+나 : (안 궁금함.. 지나가는 말로 여쭈었는데 붙잡혀버림.. 딴 생각.. 못 가고 계속 서 있음)
+```
 
 3. Blocking/Async
+```
+나 : 대표님, 개발자 좀 더 뽑아주세요..
+대표님 : 알겠습니다. 가서 볼 일 보세요.
+나 : 넵!
+대표님 : (채용 공고 등록.. 지원자 연락.. 면접 진행.. 연봉 협상..)
+나 : 채용하셨나요?
+대표님 : 아직요.
+나 : 채용하셨나요?
+대표님 : 아직요.
+나 : 채용하셨나요?
+대표님 : 아직요~!!!!!!
+```
 
 4. Non-Blocking/Async
+```
+나 : 대표님, 개발자 좀 더 뽑아주세요..
+대표님 : 알겠습니다. 가서 볼 일 보세요.
+나 : 넵!
+대표님 : (채용 공고 등록.. 지원자 연락.. 면접 진행.. 연봉 협상..)
+나 : (열일중..)
+대표님 : 한 분 모시기로 했습니다~!
+나 : 😍
+```
 ## WebServer VS WebApplicationServer 
 ## Monolithic service Application VS Micro Service Application
 ## Multi Module VS MSA 
