@@ -92,7 +92,7 @@
 
 3. 여러대의 WAS Health Check
  * 서버에 주기적으로 HTTP 요청을 보내 서버의 상태를 확인
- * interval : Health Check를 통해 서버 상태를 확인하는 요청을 날리는 주기
+ * Interval : Health Check를 통해 서버 상태를 확인하는 요청을 날리는 주기
  * Fails : 아래의 경우 3회 연속 실패하면 서버가 비정상이라고 인지
  * Passes : 서버가 다시 복구되어 요청이 2번 연속 성공하면 서버가 정상으로 인지
  
