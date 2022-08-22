@@ -65,6 +65,42 @@
 나 : 😍
 ```
 ## WebServer VS WebApplicationServer 
+### Web Server
+🚀 웹 브라우저(클라이언트)로부터 HTTP 요청을 받아 HTML 문서와 같은 정적 컨텐츠를 제공하는 프로그램
+
+**[ 기능 ]**
+1. 정적 컨텐츠 요청 시
+ * 정적 컨텐츠(HTML, JPEG, CSS, ,,,)를 제공
+
+2. 동적 컨텐츠 요청 시
+ * Web Applicaiton Server(WAS)로 전달하여 WAS가 처리한 결과를 클라이언트에 전달
+ 
+### Web Application Server(WAS)
+🚀 DB 조회나 다양한 로직 처릴ㄹ 요구하는 동적인 컨텐츠를 제공하기 위해 만들어진 프로그램
+
+**[ 기능 ]**
+* 클라이언트로부터 HTTP 요청을 받음(대부분의 WAS는 Web Server 내장)
+* 요청에 맞는 정적 컨텐츠(HTML, JPEG, CSS, ,,,)를 제공
+* DB 조회나 다양한 로직 처리를 통해 동적 컨텐츠 제공
+
+### Web Server와 WAS를 함께 사용하는 이유
+1. 책임 분할을 통한 서버 부하 방지
+ * 정적 컨텐츠는 Web Server, 동적 컨텐츠는 WAS가 담당
+ 
+2. 여러대의 WAS 로드밸런싱
+ * WAS가 처리해야 하는 요청을 여러 WAS가 나누어서 처리할 수 있도록 설정
+
+3. 여러대의 WAS Health Check
+ * 서버에 주기적으로 HTTP 요청을 보내 서버의 상태를 확인
+ * interval : Health Check를 통해 서버 상태를 확인하는 요청을 날리는 주기
+ * Fails : 아래의 경우 3회 연속 실패하면 서버가 비정상이라고 인지
+ * Passes : 서버가 다시 복구되어 요청이 2번 연속 성공하면 서버가 정상으로 인지
+ 
+4. 보안
+ * 리버스 프록시를 통해 실제 서버를 외부에 노출하지 않을 수 있음
+ 
+🌱 서비스 확장성, 안정성을 고려한다면 앞 단에 Web Server를 두는 것이 유리
+
 ## Monolithic service Application VS Micro Service Application
 ## Multi Module VS MSA 
 ## NginX VS Apache
