@@ -249,9 +249,58 @@
 ![image](https://losskatsu.github.io/assets/images/infra/reverse_proxy/reverse_proxy02.PNG)
 >참고 : https://losskatsu.github.io/it-infra/reverse-proxy/#2-%ED%8F%AC%EC%9B%8C%EB%93%9C-%ED%94%84%EB%A1%9D%EC%8B%9Cforward-%EC%84%9C%EB%B2%84%EB%9E%80
 
+**[ 특징 ]**
+1. 로드밸런싱 가능
+2. 서버 IP를 숨길 수 있어서 보안에 유리
+3. 서버 성능 향상을 위해 캐시 데이터 저장 가능
+4. SSL 암호화에 좋음
+
 ## CDN
+🚀 웹 페이지, 이미지, 비디오 등의 콘텐츠를 사용자의 물리적 위치와 가까운 프록시 서버에 캐싱하여 기다릴 필요없이, 작업이 가능한 지리적으로 분산된 여러 개의 서버를 연결하는 네트워크
+
+**[ 특징 ]**
+1. 페이지 로드 시간 단축
+2. 소유자의 호스팅 비용을 절감하여 대역폭 비용 절감
+3. 웹 트래픽 처리와 로드에 특화되어 콘텐츠 가용성 높음
+4. 서버 간에 로드를 분산하여 웹 사이트 보안 강화
+>참고 : https://www.akamai.com/ko/our-thinking/cdn/what-is-a-cdn
+
 ## 캐시
+🚀 자주 사용하는 데이터나 값을 미리 복사해 놓는 임시 장소
+
+**[ 특징 ]**
+1. 저장 공간이 작고 비용이 비쌈
+2. 대신 빠른 성능
+
+**[ 종류 ]**
+1. Local Cahce
+* Local 장비 내에서만 사용되는 캐시로, Local 장비의 Resource를 이용
+* Local에서만 작동하기 때문에 속도가 빠름
+* Local에서만 작동하기 때문에 다른 서버와 데이터 공유 어려움
+
+2. Global Cache
+* 여러 서버에서 Cache Server에 접근하여 사용하는 캐시로 분산된 서버에서 데이터를 저장하고 조회할 수 있음
+* 네트워크를 통해 데이터를 가져오므로 Local Cache에 비해 상대적으로 느림
+* 별도의 Cache서버를 이용하기 때문에 서버 간의 데이터 공유가 쉬움
+>참고 : https://mangkyu.tistory.com/69
+
 ## E-TAG
+🚀 웹 서버가 주어진 URL의 콘텐츠가 변경되었는지 알려주고 이를 반환하는 HTTP 응답 헤더
+
+* 첫 요청에 대한 응답
+
+![image](https://velog.velcdn.com/images%2Ftigger%2Fpost%2F5c8601f8-edd2-45c6-92b7-8dc4433a9bac%2Fimage.png)
+>If-None-Match : 클라이언트에서 캐싱된 E-Tag와 서버의 E-Tag가 다를 때<br>
+>If-Match : 클라이언트에서 캐싱된 E-Tag와 서버의 E-Tag가 같을 때
+
+* 재요청에 대한 응답
+
+![image](https://velog.velcdn.com/images%2Ftigger%2Fpost%2Fca78589c-0061-45eb-bbd2-6be3ae60bf74%2Fimage.png)
+>304 Not Modified : 클라이언트에게 응답이 수정되지 않았음을 알림 -> 계속해서 응답의 캐시된 버전을 사용
+
+**[ 사용 이유 ]**
+* `재요청에서!` E-Tag를 사용하지 않으면, 콘텐츠 변경 유무를 모르기 때문에 했던 일을 또 하지만, E-Tag를 사용하면 같은 요청에 대해서 변경된 리소스가 없다면 304 상태 코드와 ETag를 header에 담아 보내줄 뿐 요청에 대한 리소르를 또 보내지 않음
+
 ## 성능 테스트
 ### Virtual User
 ### TPS(RPS)
