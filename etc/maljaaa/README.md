@@ -303,15 +303,127 @@
 
 ## 성능 테스트
 ### Virtual User
+🚀 Vuser라고도 하며, 시스템에 동시에 작업하거나 접속하는 환경인 Emulation을 수행하기 위한 사람 역할을 하는 가상 사용자
+
 ### TPS(RPS)
-### MAU/DAU
+🚀 TPS(Transaction Per Second), RPS(Request Per Second) / 1초에 처리하는 단위 작업의 수, 1초에 처리하는 HTTP 요청 수
+
+### MAU/DAU(=Stickiness)
+🌱 MAU(Monthly Active Users) : 월별 활동 사용자 수
+🌱 DAU(Daily Active Users) : 일별 활동 사용자 수 - 하루에 한번만 카운트
+
+🚀 월별 사용자 대비 몇 퍼센트의 사용자가 매일 앱을 사용하는지 말해주는 지표
+
+* 앱 관심도 파악, 트래픽과 매출 예상
+
 # 기술
 ## 로깅 라이브러리 비교(스프링/자바 -> 보안 이슈 적지 말아라)
+### Log4j
+**[ 구조 ]**
+* logger : 데이터를 기록
+* appender : 데이터를 어디에 기록할지 정함(파일, 콘솔, JDBC, SMTP 등)
+* layout : 데이터를 어떤 스타일로 기록할지 정함
+
+**[ 기능 ]**
+1. Thread safe
+2. 퍼포먼스 최적화
+3. 여러 종류의 appender 지원
+4. JUL(Java Util Logging)에 비해 명확한 기준 레벨 : ALL, TRACE, DEBUG, INFO, WARN, ERROR, FATAL
+
+🌱 2020년에 다음 바전인 log4j2 출시
+
+### SLF4J(Simple Logging Facade for Java)
+🚀 Log4J 또는 LogBack과 같은 백엔드 Logging Framework의 facade pattern
+
+![image](https://gmlwjd9405.github.io/images/logging/facade-pattern.png)
+>facade pattern 참고
+
+**[ 특징 ]**
+* 다양한 Logging Framework에 대한 추상화
+* SLF4j api를 사용하면 구현체의 종류에 상관없이 일관된 로깅 코드를 작성할 수 있음
+* 배포할 때 원하는 logging Framework를 선택할 수 있음
+* Loggin Framework간에 전환이 쉬움
+* API/Binding/Bridging 세 가지 모듈 제공
+
+참고 : https://gmlwjd9405.github.io/2019/01/04/logging-with-slf4j.html
+
+### LogBack
+
+**[ 구조 ]**
+* logger : 데이터 기록
+* append : 어디에 기록할지 정함
+* encoder : 어떻게 출력할지 정함
+
+**[ 특징 ]**
+1. 빠른 implementation
+2. 적은 메모리 점유
+3. XML로 Logging 설정
+4. maxHistory 설정 값을 이용해 일정 기간이 지나면 로그파일 자동 삭제
+5. Filter 기능 : 사용자별 level 조정 가능
+
+참고 : https://oingdaddy.tistory.com/78
+
 ## RabbitMq
+🚀 AMQP(Advanced Message Queuing Protocol)를 따르는 오픈소스 메시지 브로커
+
+![image](https://blog.dudaji.com/assets/rabbitmq/MessageFlow.png)
+
+* 메시지를 많은 사용자에게 전달
+* 요청에 대한 처리시간이 길 때, 해당 요청을 다른 API에게 위임하고 빠른 응답을 할 때 사용
+* MQ를 사용하여 애플리케이션 간 결합도를 낮출 수 있음
+
+**[ AMQP ]**
+🚀 메시지 지향 미들웨어를 위한 개방형 표준 응용 계층 프로토콜
+* 정의 기능들 : 메시지 지향, 큐잉, 라우팅, 신뢰성, 보안
+
+![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbFu3hC%2FbtqLlBNLo7A%2FVKjIQUN9cTrddlyRsSktg1%2Fimg.png)
+>MOM : 비동기 메시지를 사용하는 다른 응용 프로그램 사이에서의 데이터 송수신
+
+**[ 메시지 브로커 ]**
+🚀 대규모 기반 미들웨어(서비스하는 애플리케이션들을 보다 효율적으로 아키텍처들을 연결하는 요소들로 작동하는 소프트웨어 - 메시징 플랫폼, 인증 플랫폼, 데이터 베이스) 아키텍처에 사용
+* 큐에 데이터를 보내고 받는 프로듀서와 컨슈머를 통해 메시지를 통신하고 네트워크를 맺는 용도로 사용
+* 메시지를 받아서 적절히 처리하고 나면 즉시 또는 짧은 시간 내에 삭제되는 구조
+
+참고 : https://blog.dudaji.com/general/2020/05/25/rabbitmq.html
+
 ## ActiveMq
+🚀 JMS(Java Message Service) 클라이언트와 함께 자바로 작성된 오픈 소스 메시지 브로커
+
+* 하나 이상의 클라이언트나 서버로부터 통신을 조성시키는 엔터프라이즈 기능들을 제공
+* 자바 및 기타 여러 언어 간 클라이언트 지원
 ## 카프카
+🚀 대용량 실시간 로그 처리에 특화되어 설계된 메시징 시스템
+
+* TPS가 매우 우수
+* 특화된 시스템이기 때문에 범용 메시지 시스템에서 제공하는 다양한 기능들은 제공 X
+* 기존 메시징 시스템 : broker -(push)-> consumer | Kafka : comsumer -(pull)-> broker
+
+🌱 TPS가 높은 고성능 애플리케이션 = Kafka
+🌱 고성능 X 인 자바 어플리케이션 = ActiveMQ(다양한 기능)
+🌱 AMQP 프로토콜 통신이 필요한 경우 = RabbitMQ
+
 ## ELK(elasticStack)
+🚀 Elasticsearch, Logstash, kibana의 세 가지 인기 있는 플고젝트로 구성된 스택
+
+**E = Elasticsearch**
+🌱 Apache Lucene에 구축되어 배포된 검색 및 분석 엔진
+
+* 다양한 언어를 지원하고 고성능에 스키마가 없는 JSON 문서로 다양한 로그 분석과 검색 사용에 유리
+
+**L = Logstash**
+🌱 다양한 소스로부터 데이터를 수집하고 전화하여 원하는 대상에 전송할 수 있도록 하는 오픈 소스 데이터 수집 도구
+
+* 사전 구축된 필터 & 200개가 넘는 플러그인에 대한 지원 -> 데이터 원본이나 유형에 관계없이 데이터를 쉽게 수집할 수 있음
+
+**K = Kibana**
+🌱 로그 및 이벤트 검토에 사용하는 데이터 시각화 및 탐색 도구
+
+* 대화형 차트, 사전 구축된 집계 및 필터, 지리 공간적 지원을 제공 -> 저장된 데이터를 시각화하는데 유리
+
+=> 로그 분석 공간에서의 필요(?)를 채워주기 때문에 유명하다.
+
 ## 레디스
+
 ## 도커
 ## 쿠버네티스
 ## 프로메테우스
