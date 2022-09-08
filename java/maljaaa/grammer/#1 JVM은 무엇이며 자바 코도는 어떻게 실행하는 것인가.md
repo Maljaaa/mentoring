@@ -1,6 +1,7 @@
 # JVM은 무엇이며 자바 코도는 어떻게 실행하는 것인가
 ## JVM이란 무엇인가
 ![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F0kg24%2Fbtq4YOOQH4J%2FEF2ISOpkYA36a1flwtLEmK%2Fimg.png)
+
 🚀 Java Virtual Machine : OS에 상관없이 Java를 인식하고 생성된 바이트 코드(.class)를 기계어로 전달해주는 가상 컴퓨터
 
 ## 컴파일 하는 방법
