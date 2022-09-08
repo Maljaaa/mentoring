@@ -29,11 +29,56 @@
 ![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtclVx%2Fbtq4Xfml6Dy%2Fnzb5xxlGG1fr5iBGUMv77K%2Fimg.png)
 
 * 클래스 로더(Class Loader)
+- JVM 내로 클래스 파일(.class)을 로드하고, 링크를 통해 배치하는 작업을 수행하는 모듈
+- 클래스를 처음으로 참조할 때, 해당 클래스를 로드하고 링크하는 역할
+
 * 실행 엔진(Execution Engine)
+- 클래스를 실행시키는 역할
+- 바이트 코드를 실제로 JVM 내부에서 기계가 실행할 수 있는 형태로 변경
+  
   * 인터프리터(Interpreter)
+  - 자바 바이트 코드를 명령어 단위로 읽어서 실행
+  - 단점 : 한 줄씩 수행하기 때문에 느림
+  
   * JIT 컴파일러(Just-In-Time)
+  - 인터프리터 방식으로 실행하다가 자주 사용하는 부분은 컴파일하여 기계어로 변경하고 다음 실행에서 기계어로 직접 실행하는 방식
+  
   * 가비지 콜렉터(Garbage collector)
+  - 더 이상 사용되지 않는 인스턴스를 찾아 메모리에서 삭제
+  
 * 런타임 데이터 영역(Runtime Data Area)
+![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcEjHLD%2Fbtq4YtqCAGY%2FrrVrI45UWSH2LqslkP8Wg0%2Fimg.png)
+  * PC Register
+  - Thread가 시작될 때 생성되며 생성될 때마다 생성되는 공간으로, 스레드마다 하나씩 존재
+  - Thread의 다음 명령어를 기록 & 현재 수행 중인 JVM 명령의 주소 가짐
+  
+  * JVM 스택 영역
+  - 프로그램 실행 과정에서 임시로 할당되었다가 메소드를 빠져나가면 바로 소멸되는 특성의 데이터(메소드 안에서 사용되는 값, 호출된 메소드의 매개변수, 지역변수, 리턴 값 및 연산 값 등)를 저장하기 위한 영역
+  
+  * Native method stack
+  - 자바 프로그램이 컴파일되어 생성되는 바이트 코드가 아닌 실제 실행할 수 있는 기계어로 작성된 프로그램을 실행시키는 영역
+  - JAVA가 아닌 다른 언어로 작성된 코드를 위한 공간
+  
+  * Method Area(= Class area = Static area)
+  - 클래스 정보를 처음 메모리 공간에 올릴 때 초기화되는 대상을 저장하기 위한 메모리 공간
+  
+    * Runtime Constant Pool
+    - 상수 자료형을 저장하여 참조하고 중복을 막는 역할
+  
+  * Heap 영역
+   
+    * Permanent Generation
+    
+    * New/Young 영역
+     
+     
+     * Eden
+     
+     
+     * Survivor
+    
+    
+    * Old 영역
 
 ## JDK와 JRE의 차이
 
