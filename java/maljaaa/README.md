@@ -88,6 +88,15 @@
     -> Minor GC에 비해 속도가 느림<br><br>
     
 ## JDK와 JRE의 차이
+### JDK(Java Development Kit, 자바 개발 키트)
+🚀 Java를 사용하기 위해 필요한 모든 기능을 갖춘 Java용 SDK(Software Development Kit)
+* JDK는 JRE를 포함하고 있음
+* 컴파일러(javac), jdb, javadoc과 같은 도구 존재
+🌱 프로그램을 **생성, 실행, 컴파일** 할 수 있음
+
+### JRE(Java Runtime Environment, 자바 런타임 환경)
+🚀 JVM + 자바 클래스 라이브러리(Java Class Library) 등으로 구성
+* 컴파일된 Java 프로그램을 **실행**하는데 필요한 패키지
 
 # 자바 데이터 타입, 변수 그리고 배열
 ## 프리미티브 타입 종류와 값의 범위 그리고 기본 값
