@@ -28,25 +28,25 @@
 ## JVM 구성 요소
 ![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtclVx%2Fbtq4Xfml6Dy%2Fnzb5xxlGG1fr5iBGUMv77K%2Fimg.png)
 
-* 클래스 로더(Class Loader)
-- JVM 내로 클래스 파일(.class)을 로드하고, 링크를 통해 배치하는 작업을 수행하는 모듈
-- 클래스를 처음으로 참조할 때, 해당 클래스를 로드하고 링크하는 역할
+* 클래스 로더(Class Loader)<br>
+-> JVM 내로 클래스 파일(.class)을 로드하고, 링크를 통해 배치하는 작업을 수행하는 모듈<br>
+-> 클래스를 처음으로 참조할 때, 해당 클래스를 로드하고 링크하는 역할<br><br>
 
-* 실행 엔진(Execution Engine)
-- 클래스를 실행시키는 역할
-- 바이트 코드를 실제로 JVM 내부에서 기계가 실행할 수 있는 형태로 변경
+* 실행 엔진(Execution Engine)<br>
+-> 클래스를 실행시키는 역할<br>
+-> 바이트 코드를 실제로 JVM 내부에서 기계가 실행할 수 있는 형태로 변경<br><br>
   
-  * 인터프리터(Interpreter)
-  - 자바 바이트 코드를 명령어 단위로 읽어서 실행
-  - 단점 : 한 줄씩 수행하기 때문에 느림
+  * 인터프리터(Interpreter)<br>
+  -> 자바 바이트 코드를 명령어 단위로 읽어서 실행<br>
+  -> 단점 : 한 줄씩 수행하기 때문에 느림<br><br>
   
-  * JIT 컴파일러(Just-In-Time)
-  - 인터프리터 방식으로 실행하다가 자주 사용하는 부분은 컴파일하여 기계어로 변경하고 다음 실행에서 기계어로 직접 실행하는 방식
+  * JIT 컴파일러(Just-In-Time)<br>
+  -> 인터프리터 방식으로 실행하다가 자주 사용하는 부분은 컴파일하여 기계어로 변경하고 다음 실행에서 기계어로 직접 실행하는 방식<br><br>
   
-  * 가비지 콜렉터(Garbage collector)
-  - 더 이상 사용되지 않는 인스턴스를 찾아 메모리에서 삭제
+  * 가비지 콜렉터(Garbage collector)<br>
+  -> 더 이상 사용되지 않는 인스턴스를 찾아 메모리에서 삭제<br><br>
   
-* 런타임 데이터 영역(Runtime Data Area)
+* 런타임 데이터 영역(Runtime Data Area)<br>
 ![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcEjHLD%2Fbtq4YtqCAGY%2FrrVrI45UWSH2LqslkP8Wg0%2Fimg.png)
   * PC Register<br>
   -> Thread가 시작될 때 생성되며 생성될 때마다 생성되는 공간으로, 스레드마다 하나씩 존재<br>
@@ -67,21 +67,26 @@
   
   * Heap 영역<br>
   ![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FmxiE4%2Fbtq4Y5pwyCR%2F3nO3XIf20wUUTrzMKvn5yk%2Fimg.png)<br>
-  -> 
+  -> 객체를 저장하는 가상메모리 공간<br>
+  -> new 연산자로 생성되는 객체와 배열을 저장<br><br>
    
-    * Permanent Generation
+    * Permanent Generation<br>
+    -> 생성된 객체들의 정보의 주소값이 저장된 공간<br>
+    -> Reflection(구체적인 클래스 타입을 알지 못해도, 컴파일된 바이트 코드를 통해 역으로 클래스의 정보를 알아내어 사용 가능)을 사용하여 동적으로 클래스가 로딩되는 경우에 사용<br><br>
     
-    * New/Young 영역
+    * New/Young 영역(가비지 콜렉터에 의해 사라짐)<br>
+    -> 생명 주기가 짧은 '젊은 객체'를 GC(가비지 콜렉트 = Minor GC) 대상으로 하는 영역<br><br>
      
+     * Eden<br>
+     -> 객체들이 최초로 생성되는 공간<br><br>
      
-     * Eden
-     
-     
-     * Survivor
+     * Survivor 0, 1<br>
+     -> Eden에서 참조되는 객체들이 저장되는 공간<br><br>
     
+    * Old 영역(가비지 콜렉터에 의해 사라짐)<br>
+    -> 생명 주기가 긴 '오래된 객체'를 G(가비지 콜렉트 = Major GC)C 대상으로 하는 영역<br>
+    -> Minor GC에 비해 속도가 느림<br><br>
     
-    * Old 영역
-
 ## JDK와 JRE의 차이
 
 # 자바 데이터 타입, 변수 그리고 배열
