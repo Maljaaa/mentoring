@@ -1,0 +1,107 @@
+# 연산자
+## 산술 연산자
+```
++, -, *, /, %
+```
+## 비트 연산자
+```
+&, |, ^
+```
+## 관계 연산자
+```
+<, >, ≤, ≥, ==, !=
+```
+## 논리 연산자
+```
+&&, ||
+```
+## instanceof
+🚀 참조변수가 참조하고 있는 인스턴스의 실제 타입을 알아보기 위해 사용
+
+```
+[참조변수] instanceof [타입/클래스명]
+```
+
+* 연산결과는 boolean
+* 결과가 true이면 형 변환 가능
+* null인 참조변수에 대해서 수행하면 false
+* 부모 자식 관계면 자식에서도 true
+
+## assignment(=) operator
+🚀 대입 연산자
+![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FCO7ip%2Fbtq49aKN1mB%2FhoRaYdfkBK3Pp6LkFUkCb0%2Fimg.png)
+
+## 화살표(->) 연산자
+🚀 람다 표현식, 클래스를 작성하고 객체를 생성하지 않아도 메소드를 사용할 수 있음
+
+```
+// 메소드
+int min(int x, int y) {
+    retrun x < y ? x : y;
+}
+```
+
+```
+// 람다 표현식
+(x, y) -> x < y ? x : y;
+```
+## 3항 연산자
+```
+(조건) ? 참일 때 : 거짓일 때
+```
+
+## 연산자 우선 순위
+* 단항 -> 이항 -> 삼항
+* 산술 -> 비교 -> 논리 -> 대입
+![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FLn47K%2Fbtq454j1IU6%2F2RrvBjHhCVNMGacQEw0xZK%2Fimg.png)
+
+## (optional) Java 13. switch 연산자
+🚀 기존의 switch/case 문을 좀 더 간결하게 사용 가능
+
+**기존**
+```
+String str = "A";
+
+    switch(str){
+        case "A": 
+            System.out.println("1");
+        case "B":
+            System.out.println("2");
+        case "C" :
+            System.out.println("3");
+        default :
+            System.out.println("그 외의 숫자");
+    }
+```
+
+**Java 13**
+```
+String result = switch(n) {
+    case "A" -> System.out.println("1");
+    case "B" -> System.out.println("2");
+    case "C" -> System.out.println("3");
+    default -> System.out.println("그 외의 숫자");
+}
+```
+
+```
+String result = switch(n) {
+    case "A" -> {
+        System.out.println("1");
+        yield 1;
+    }
+    case "B" -> {
+        System.out.println("2");
+        yield 2;
+    }
+    case "C" -> {
+        System.out.println("3");
+        yield 3;
+    }
+    default -> {
+        System.out.println("그 외의 숫자");
+        yield 100;
+    }
+}
+```
+> 반환문법 : break -> yield로 변경 / 내다, 산출하다, 생산하다
