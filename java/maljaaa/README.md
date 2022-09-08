@@ -48,24 +48,26 @@
   
 * 런타임 데이터 영역(Runtime Data Area)
 ![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcEjHLD%2Fbtq4YtqCAGY%2FrrVrI45UWSH2LqslkP8Wg0%2Fimg.png)
-  * PC Register
-  - Thread가 시작될 때 생성되며 생성될 때마다 생성되는 공간으로, 스레드마다 하나씩 존재
-  - Thread의 다음 명령어를 기록 & 현재 수행 중인 JVM 명령의 주소 가짐
+  * PC Register<br>
+  -> Thread가 시작될 때 생성되며 생성될 때마다 생성되는 공간으로, 스레드마다 하나씩 존재<br>
+  -> Thread의 다음 명령어를 기록 & 현재 수행 중인 JVM 명령의 주소 가짐<br><br>
   
-  * JVM 스택 영역
-  - 프로그램 실행 과정에서 임시로 할당되었다가 메소드를 빠져나가면 바로 소멸되는 특성의 데이터(메소드 안에서 사용되는 값, 호출된 메소드의 매개변수, 지역변수, 리턴 값 및 연산 값 등)를 저장하기 위한 영역
+  * JVM 스택 영역<br>
+  -> 프로그램 실행 과정에서 임시로 할당되었다가 메소드를 빠져나가면 바로 소멸되는 특성의 데이터(메소드 안에서 사용되는 값, 호출된 메소드의 매개변수, 지역변수, 리턴 값 및 연산 값 등)를 저장하기 위한 영역<br><br>
   
-  * Native method stack
-  - 자바 프로그램이 컴파일되어 생성되는 바이트 코드가 아닌 실제 실행할 수 있는 기계어로 작성된 프로그램을 실행시키는 영역
-  - JAVA가 아닌 다른 언어로 작성된 코드를 위한 공간
+  * Native method stack<br>
+  -> 자바 프로그램이 컴파일되어 생성되는 바이트 코드가 아닌 실제 실행할 수 있는 기계어로 작성된 프로그램을 실행시키는 영역<br>
+  -> JAVA가 아닌 다른 언어로 작성된 코드를 위한 공간<br><br>
   
-  * Method Area(= Class area = Static area)
-  - 클래스 정보를 처음 메모리 공간에 올릴 때 초기화되는 대상을 저장하기 위한 메모리 공간
+  * Method Area(= Class area = Static area)<br>
+  -> 클래스 정보를 처음 메모리 공간에 올릴 때 초기화되는 대상을 저장하기 위한 메모리 공간<br><br>
   
-    * Runtime Constant Pool
-    - 상수 자료형을 저장하여 참조하고 중복을 막는 역할
+    * Runtime Constant Pool<br>
+    -> 상수 자료형을 저장하여 참조하고 중복을 막는 역할<br><br>
   
-  * Heap 영역
+  * Heap 영역<br>
+  ![image](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FmxiE4%2Fbtq4Y5pwyCR%2F3nO3XIf20wUUTrzMKvn5yk%2Fimg.png)<br>
+  -> 
    
     * Permanent Generation
     
